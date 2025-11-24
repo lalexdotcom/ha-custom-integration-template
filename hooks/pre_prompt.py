@@ -23,6 +23,7 @@ def get_repository_url():
 
 
 if __name__ == "__main__":
+    print(os.environ)
     print(os.environ['CUSTOM_INTEGRATION_ROOT'])
     repository_infos = get_repository_url()
     print(repository_infos)
