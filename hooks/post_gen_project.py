@@ -18,8 +18,8 @@ def move_template():
             shutil.copytree(source, target)
         else:
             shutil.copy(source, target)
-    
-    os.rmdir(os.getcwd())
+
+    os.rmdir(os.getcwd(), ignore_errors=True)
 
 
 if __name__ == "__main__":
