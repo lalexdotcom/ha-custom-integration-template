@@ -13,10 +13,11 @@ def move_template():
 
     for item in os.listdir(working_dir):
         source = os.path.join(working_dir, item)
+        target = os.path.join(working_dir, "..", item)
         if os.path.isdir(source):
-            shutil.copytree(source, "..")
+            shutil.copytree(source, target)
         else:
-            shutil.copy(source, "..")
+            shutil.copy(source, target)
     
     os.rmdir(os.getcwd())
 
