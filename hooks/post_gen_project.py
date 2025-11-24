@@ -17,7 +17,7 @@ def move_template():
         if os.path.isdir(source):
             shutil.copytree(source, target)
         else:
-            shutil.copy2(source, target)
+            os.copy(source, target)
     
     os.rmdir(os.getcwd())
 
