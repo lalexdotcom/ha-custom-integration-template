@@ -8,6 +8,7 @@ def get_repository_url():
     try:
         cwd = os.getcwd()
         os.chdir("..")
+        print("Get repository URL from %s", os.getcwd())
         full_url = subprocess.getoutput(["git config --get remote.origin.url"])
         os.chdir(cwd)
         return re.sub(r'(.*)(\.git)$', "\\1", full_url)
