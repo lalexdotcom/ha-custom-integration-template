@@ -10,7 +10,7 @@ if TYPE_CHECKING:
     from homeassistant.loader import Integration
 
     from .api import {{ cookiecutter.class_name_prefix }}ApiClient
-    from .coordinator import BlueprintDataUpdateCoordinator
+    from .coordinator import {{ cookiecutter.class_name_prefix }}DataUpdateCoordinator
 
 
 type {{ cookiecutter.class_name_prefix }}ConfigEntry = ConfigEntry[{{ cookiecutter.class_name_prefix }}Data]
@@ -21,5 +21,5 @@ class {{ cookiecutter.class_name_prefix }}Data:
     """Data for the Blueprint integration."""
 
     client: {{ cookiecutter.class_name_prefix }}ApiClient
-    coordinator: BlueprintDataUpdateCoordinator
+    coordinator: {{ cookiecutter.class_name_prefix }}DataUpdateCoordinator
     integration: Integration

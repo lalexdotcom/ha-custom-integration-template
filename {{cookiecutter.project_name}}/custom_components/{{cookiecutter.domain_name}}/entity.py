@@ -6,15 +6,15 @@ from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import ATTRIBUTION
-from .coordinator import BlueprintDataUpdateCoordinator
+from .coordinator import {{ cookiecutter.class_name_prefix }}DataUpdateCoordinator
 
 
-class {{ cookiecutter.class_name_prefix }}Entity(CoordinatorEntity[BlueprintDataUpdateCoordinator]):
+class {{ cookiecutter.class_name_prefix }}Entity(CoordinatorEntity[{{ cookiecutter.class_name_prefix }}DataUpdateCoordinator]):
     """BlueprintEntity class."""
 
     _attr_attribution = ATTRIBUTION
 
-    def __init__(self, coordinator: BlueprintDataUpdateCoordinator) -> None:
+    def __init__(self, coordinator: {{ cookiecutter.class_name_prefix }}DataUpdateCoordinator) -> None:
         """Initialize."""
         super().__init__(coordinator)
         self._attr_unique_id = coordinator.config_entry.entry_id

@@ -16,7 +16,7 @@ if TYPE_CHECKING:
     from homeassistant.core import HomeAssistant
     from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
-    from .coordinator import BlueprintDataUpdateCoordinator
+    from .coordinator import {{ cookiecutter.class_name_prefix }}DataUpdateCoordinator
     from .data import {{ cookiecutter.class_name_prefix }}ConfigEntry
 
 ENTITY_DESCRIPTIONS = (
@@ -48,7 +48,7 @@ class {{ cookiecutter.class_name_prefix }}BinarySensor({{ cookiecutter.class_nam
 
     def __init__(
         self,
-        coordinator: BlueprintDataUpdateCoordinator,
+        coordinator: {{ cookiecutter.class_name_prefix }}DataUpdateCoordinator,
         entity_description: BinarySensorEntityDescription,
     ) -> None:
         """Initialize the binary_sensor class."""

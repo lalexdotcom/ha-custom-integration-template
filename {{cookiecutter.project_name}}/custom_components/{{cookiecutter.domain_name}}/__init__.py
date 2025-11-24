@@ -16,7 +16,7 @@ from homeassistant.loader import async_get_loaded_integration
 
 from .api import {{ cookiecutter.class_name_prefix }}ApiClient
 from .const import DOMAIN, LOGGER
-from .coordinator import BlueprintDataUpdateCoordinator
+from .coordinator import {{ cookiecutter.class_name_prefix }}DataUpdateCoordinator
 from .data import {{ cookiecutter.class_name_prefix }}Data
 
 if TYPE_CHECKING:
@@ -37,7 +37,7 @@ async def async_setup_entry(
     entry: {{ cookiecutter.class_name_prefix }}ConfigEntry,
 ) -> bool:
     """Set up this integration using UI."""
-    coordinator = BlueprintDataUpdateCoordinator(
+    coordinator = {{ cookiecutter.class_name_prefix }}DataUpdateCoordinator(
         hass=hass,
         logger=LOGGER,
         name=DOMAIN,
