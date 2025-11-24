@@ -2,11 +2,11 @@
   "domain": "{{ cookiecutter.domain_name }}",
   "name": "{{ cookiecutter.friendly_name }}",
   "codeowners": [
-    "{{ cookiecutter.code_owner }}"
+    "@{{ cookiecutter.repository_owner }}"
   ],
   "config_flow": true,
-  "documentation": "{{ cookiecutter.github_url }}",
+  "documentation": "{{ cookiecutter.repository_url }}",
   "iot_class": "{{ cookiecutter.iot_class }}",
-  "issue_tracker": "{{ cookiecutter.github_url }}/issues",
+  "issue_tracker": "{{ cookiecutter.repository_url }}/issues",
   "version": "0.1.0"
 }

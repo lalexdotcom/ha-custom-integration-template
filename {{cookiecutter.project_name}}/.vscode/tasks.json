@@ -5,6 +5,11 @@
             "label": "Run Home assistant",
             "type": "shell",
             "command": "./scripts/develop",
+        },
+        {
+            "label": "Lint",
+            "type": "shell",
+            "command": "./scripts/lint",
         }
     ]
 }
