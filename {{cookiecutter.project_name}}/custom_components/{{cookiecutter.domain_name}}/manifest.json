@@ -2,7 +2,7 @@
   "domain": "{{ cookiecutter.domain_name }}",
   "name": "{{ cookiecutter.friendly_name }}",
   "codeowners": [
-    "@lalexdotcom"
+    "@{{ cookiecutter.github_url | replace('https://github.com/(.*)/.*', '\\1') }}"
   ],
   "config_flow": true,
   "documentation": "{{ cookiecutter.github_url }}",
