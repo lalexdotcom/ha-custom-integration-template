@@ -8,7 +8,7 @@ def move_template():
     folder_entries = os.listdir(os.getcwd())
 
     for folder_entry in folder_entries:
-        shutil.move(folder_entry, "..")
+        shutil.copy(folder_entry, "..")
 
     os.rmdir(os.getcwd())
 
