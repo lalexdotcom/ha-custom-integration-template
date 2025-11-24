@@ -8,7 +8,8 @@ def move_template():
     for folder_entry in working_dir:
         shutil.move(folder_entry, "..")
 
-    shutil.rmtree(working_dir)
+    os.chdir("..")
+    os.rmdir(working_dir)
 
 
 if __name__ == "__main__":
