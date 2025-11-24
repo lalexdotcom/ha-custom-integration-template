@@ -1,2 +1,0 @@
-default_context:
-    iot_class: "cloud_polling"

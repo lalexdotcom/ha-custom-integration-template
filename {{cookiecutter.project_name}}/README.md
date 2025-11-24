@@ -2,7 +2,7 @@
 
 ## Installation
 
-[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner={{ cookiecutter.repository_owner }}&repository={{ cookiecutters.repository_name }}&category=integration)
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner={{ cookiecutter.repository_owner }}&repository={{ cookiecutter.repository_name }}&category=integration)
 
 <details>
 <summary>Click to show installation instructions</summary>
