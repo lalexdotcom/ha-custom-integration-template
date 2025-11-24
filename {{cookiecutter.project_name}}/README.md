@@ -1,4 +1,4 @@
-# Awesome project
+# {{ cookiecutter.friendly_name }}
 
 ## Installation
 
