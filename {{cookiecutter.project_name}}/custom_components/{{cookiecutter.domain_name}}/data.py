@@ -1,4 +1,4 @@
-"""Custom types for integration_blueprint."""
+"""Custom types for {{ cookiecutter.domain_name }}."""
 
 from __future__ import annotations
 
@@ -9,17 +9,17 @@ if TYPE_CHECKING:
     from homeassistant.config_entries import ConfigEntry
     from homeassistant.loader import Integration
 
-    from .api import IntegrationBlueprintApiClient
+    from .api import {{ cookiecutter.class_name_prefix }}ApiClient
     from .coordinator import BlueprintDataUpdateCoordinator
 
 
-type IntegrationBlueprintConfigEntry = ConfigEntry[IntegrationBlueprintData]
+type {{ cookiecutter.class_name_prefix }}ConfigEntry = ConfigEntry[{{ cookiecutter.class_name_prefix }}Data]
 
 
 @dataclass
-class IntegrationBlueprintData:
+class {{ cookiecutter.class_name_prefix }}Data:
     """Data for the Blueprint integration."""
 
-    client: IntegrationBlueprintApiClient
+    client: {{ cookiecutter.class_name_prefix }}ApiClient
     coordinator: BlueprintDataUpdateCoordinator
     integration: Integration

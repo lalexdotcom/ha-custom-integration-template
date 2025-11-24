@@ -9,18 +9,18 @@ import aiohttp
 import async_timeout
 
 
-class IntegrationBlueprintApiClientError(Exception):
+class {{ cookiecutter.class_name_prefix }}ApiClientError(Exception):
     """Exception to indicate a general API error."""
 
 
-class IntegrationBlueprintApiClientCommunicationError(
-    IntegrationBlueprintApiClientError,
+class {{ cookiecutter.class_name_prefix }}ApiClientCommunicationError(
+    {{ cookiecutter.class_name_prefix }}ApiClientError,
 ):
     """Exception to indicate a communication error."""
 
 
-class IntegrationBlueprintApiClientAuthenticationError(
-    IntegrationBlueprintApiClientError,
+class {{ cookiecutter.class_name_prefix }}ApiClientAuthenticationError(
+    {{ cookiecutter.class_name_prefix }}ApiClientError,
 ):
     """Exception to indicate an authentication error."""
 
@@ -29,13 +29,13 @@ def _verify_response_or_raise(response: aiohttp.ClientResponse) -> None:
     """Verify that the response is valid."""
     if response.status in (401, 403):
         msg = "Invalid credentials"
-        raise IntegrationBlueprintApiClientAuthenticationError(
+        raise {{ cookiecutter.class_name_prefix }}ApiClientAuthenticationError(
             msg,
         )
     response.raise_for_status()
 
 
-class IntegrationBlueprintApiClient:
+class {{ cookiecutter.class_name_prefix }}ApiClient:
     """Sample API Client."""
 
     def __init__(
@@ -86,16 +86,16 @@ class IntegrationBlueprintApiClient:
 
         except TimeoutError as exception:
             msg = f"Timeout error fetching information - {exception}"
-            raise IntegrationBlueprintApiClientCommunicationError(
+            raise {{ cookiecutter.class_name_prefix }}ApiClientCommunicationError(
                 msg,
             ) from exception
         except (aiohttp.ClientError, socket.gaierror) as exception:
             msg = f"Error fetching information - {exception}"
-            raise IntegrationBlueprintApiClientCommunicationError(
+            raise {{ cookiecutter.class_name_prefix }}ApiClientCommunicationError(
                 msg,
             ) from exception
         except Exception as exception:  # pylint: disable=broad-except
             msg = f"Something really wrong happened! - {exception}"
-            raise IntegrationBlueprintApiClientError(
+            raise {{ cookiecutter.class_name_prefix }}ApiClientError(
                 msg,
             ) from exception

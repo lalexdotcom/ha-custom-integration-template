@@ -11,6 +11,7 @@ def get_repository_url():
 
 if __name__ == "__main__":
     github_url = get_repository_url()
+    print(github_url)
     if github_url:
         with open('cookiecutter.json', 'r+') as file_content:
             data = json.load(file_content)

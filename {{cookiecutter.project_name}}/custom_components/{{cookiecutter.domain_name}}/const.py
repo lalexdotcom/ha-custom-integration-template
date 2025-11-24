@@ -1,8 +1,8 @@
-"""Constants for integration_blueprint."""
+"""Constants for {{ cookiecutter.domain_name }}."""
 
 from logging import Logger, getLogger
 
 LOGGER: Logger = getLogger(__package__)
 
-DOMAIN = "integration_blueprint"
+DOMAIN = "{{ cookiecutter.domain_name }}"
 ATTRIBUTION = "Data provided by http://jsonplaceholder.typicode.com/"
