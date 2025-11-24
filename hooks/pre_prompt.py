@@ -14,8 +14,8 @@ def get_repository_url():
                           subprocess.getoutput(["git config --get remote.origin.url"]))
         os.chdir(cwd)
         return {
-            "github_url": full_url,
-            "code_owner": f"@{re.sub(
+            "repository_url": full_url,
+            "github_code_owner": f"@{re.sub(
                 r'https://github.com/(.*)/.*', "\\1", full_url)}"
         }
     except Exception:
@@ -23,15 +23,14 @@ def get_repository_url():
 
 
 if __name__ == "__main__":
-    print(os.environ)
+    print(os.environ['CUSTOM_INTEGRATION_ROOT'])
     repository_infos = get_repository_url()
     print(repository_infos)
     if repository_infos:
         with open("cookiecutter.json", "r+") as file_content:
             data = json.load(file_content)
-            # data["github_url"] = repository_infos
-            # data["code_owner"] = f"@{re.sub(
-            #     r'https://github.com/(.*)/.*', "\\1", repository_infos)}"
-            # file_content.seek(0)
-            # json.dump(data, file_content, indent=4)
-            # file_content.truncate()
+            data["github_url"] = repository_infos["repository_url"]
+            data["code_owner"] = repository_infos["github_code_owner"]
+            file_content.seek(0)
+            json.dump(data, file_content, indent=4)
+            file_content.truncate()
