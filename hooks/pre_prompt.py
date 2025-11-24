@@ -1,11 +1,15 @@
 import json
+import os
 import re
 import subprocess
 
 
 def get_repository_url():
     try:
+        cwd = os.getcwd()
+        os.chdir("..")
         full_url = subprocess.getoutput(["git config --get remote.origin.url"])
+        os.chdir(cwd)
         return re.sub(r'(.*)(\.git)$', "\\1", full_url)
     except Exception:
         return False
