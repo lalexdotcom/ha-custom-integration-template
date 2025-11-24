@@ -10,5 +10,7 @@
         "local_push",
         "calculated"
     ],
-    "version": "0.0.1"
+    "version": "0.0.1",
+    "github_url": "",
+    "code_owner": "@lalexdotcom"
 }
