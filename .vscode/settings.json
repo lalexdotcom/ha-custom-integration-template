@@ -1,3 +1,5 @@
 {
-    "ruff.enable": false
+    "python.analysis.exclude": [
+        "{{cookiecutter.project_name}}/**"
+    ]
 }

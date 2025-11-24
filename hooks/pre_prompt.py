@@ -18,6 +18,8 @@ if __name__ == "__main__":
         with open("cookiecutter.json", "r+") as file_content:
             data = json.load(file_content)
             data["github_url"] = github_url
+            data["code_owner"] = f"@{re.sub(
+                r'https://github.com/(.*)/.*', "\\1", github_url)}"
             file_content.seek(0)
             json.dump(data, file_content, indent=4)
             file_content.truncate()

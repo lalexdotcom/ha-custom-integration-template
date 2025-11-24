@@ -2,11 +2,11 @@
   "domain": "{{ cookiecutter.domain_name }}",
   "name": "{{ cookiecutter.friendly_name }}",
   "codeowners": [
-    "@{{ cookiecutter.github_url | replace('https://github.com/(.*)/.*', '\\1') }}"
+    "{{ cookiecutter.code_owner }}"
   ],
   "config_flow": true,
   "documentation": "{{ cookiecutter.github_url }}",
-  "iot_class": "cloud_polling",
+  "iot_class": "{{ cookiecutter.iot_class }}",
   "issue_tracker": "{{ cookiecutter.github_url }}/issues",
   "version": "0.1.0"
 }

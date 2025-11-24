@@ -10,10 +10,5 @@
         "local_push",
         "calculated"
     ],
-    "version": "0.0.1",
-    "test_suite": [
-        "yes",
-        "no"
-    ],
-    "code_owner": "@{{ cookiecutter.github_url | replace('https://github.com/(.*)/.*', '\\1') }}"
+    "version": "0.0.1"
 }
