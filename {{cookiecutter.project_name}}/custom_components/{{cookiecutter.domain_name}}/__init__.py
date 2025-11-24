@@ -14,15 +14,15 @@ from homeassistant.const import CONF_PASSWORD, CONF_USERNAME, Platform
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.loader import async_get_loaded_integration
 
-from .api import {{ cookiecutter.class_name_prefix }}ApiClient
+from .api import {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}ApiClient
 from .const import DOMAIN, LOGGER
-from .coordinator import {{ cookiecutter.class_name_prefix }}DataUpdateCoordinator
-from .data import {{ cookiecutter.class_name_prefix }}Data
+from .coordinator import {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}DataUpdateCoordinator
+from .data import {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}Data
 
 if TYPE_CHECKING:
     from homeassistant.core import HomeAssistant
 
-    from .data import {{ cookiecutter.class_name_prefix }}ConfigEntry
+    from .data import {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}ConfigEntry
 
 PLATFORMS: list[Platform] = [
     Platform.SENSOR,
@@ -34,17 +34,17 @@ PLATFORMS: list[Platform] = [
 # https://developers.home-assistant.io/docs/config_entries_index/#setting-up-an-entry
 async def async_setup_entry(
     hass: HomeAssistant,
-    entry: {{ cookiecutter.class_name_prefix }}ConfigEntry,
+    entry: {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}ConfigEntry,
 ) -> bool:
     """Set up this integration using UI."""
-    coordinator = {{ cookiecutter.class_name_prefix }}DataUpdateCoordinator(
+    coordinator = {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}DataUpdateCoordinator(
         hass=hass,
         logger=LOGGER,
         name=DOMAIN,
         update_interval=timedelta(hours=1),
     )
-    entry.runtime_data = {{ cookiecutter.class_name_prefix }}Data(
-        client={{ cookiecutter.class_name_prefix }}ApiClient(
+    entry.runtime_data = {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}Data(
+        client={{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}ApiClient(
             username=entry.data[CONF_USERNAME],
             password=entry.data[CONF_PASSWORD],
             session=async_get_clientsession(hass),
@@ -64,7 +64,7 @@ async def async_setup_entry(
 
 async def async_unload_entry(
     hass: HomeAssistant,
-    entry: {{ cookiecutter.class_name_prefix }}ConfigEntry,
+    entry: {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}ConfigEntry,
 ) -> bool:
     """Handle removal of an entry."""
     return await hass.config_entries.async_unload_platforms(entry, PLATFORMS)
@@ -72,7 +72,7 @@ async def async_unload_entry(
 
 async def async_reload_entry(
     hass: HomeAssistant,
-    entry: {{ cookiecutter.class_name_prefix }}ConfigEntry,
+    entry: {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}ConfigEntry,
 ) -> None:
     """Reload config entry."""
     await hass.config_entries.async_reload(entry.entry_id)

@@ -1,4 +1,4 @@
-"""BlueprintEntity class."""
+"""{{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}Entity class."""
 
 from __future__ import annotations
 
@@ -6,15 +6,15 @@ from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import ATTRIBUTION
-from .coordinator import {{ cookiecutter.class_name_prefix }}DataUpdateCoordinator
+from .coordinator import {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}DataUpdateCoordinator
 
 
-class {{ cookiecutter.class_name_prefix }}Entity(CoordinatorEntity[{{ cookiecutter.class_name_prefix }}DataUpdateCoordinator]):
-    """BlueprintEntity class."""
+class {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}Entity(CoordinatorEntity[{{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}DataUpdateCoordinator]):
+    """{{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}Entity class."""
 
     _attr_attribution = ATTRIBUTION
 
-    def __init__(self, coordinator: {{ cookiecutter.class_name_prefix }}DataUpdateCoordinator) -> None:
+    def __init__(self, coordinator: {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}DataUpdateCoordinator) -> None:
         """Initialize."""
         super().__init__(coordinator)
         self._attr_unique_id = coordinator.config_entry.entry_id

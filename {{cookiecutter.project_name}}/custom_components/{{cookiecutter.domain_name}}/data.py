@@ -9,17 +9,17 @@ if TYPE_CHECKING:
     from homeassistant.config_entries import ConfigEntry
     from homeassistant.loader import Integration
 
-    from .api import {{ cookiecutter.class_name_prefix }}ApiClient
-    from .coordinator import {{ cookiecutter.class_name_prefix }}DataUpdateCoordinator
+    from .api import {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}ApiClient
+    from .coordinator import {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}DataUpdateCoordinator
 
 
-type {{ cookiecutter.class_name_prefix }}ConfigEntry = ConfigEntry[{{ cookiecutter.class_name_prefix }}Data]
+type {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}ConfigEntry = ConfigEntry[{{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}Data]
 
 
 @dataclass
-class {{ cookiecutter.class_name_prefix }}Data:
-    """Data for the Blueprint integration."""
+class {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}Data:
+    """Data for the {{ cookiecutter.friendly_name }} integration."""
 
-    client: {{ cookiecutter.class_name_prefix }}ApiClient
-    coordinator: {{ cookiecutter.class_name_prefix }}DataUpdateCoordinator
+    client: {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}ApiClient
+    coordinator: {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}DataUpdateCoordinator
     integration: Integration

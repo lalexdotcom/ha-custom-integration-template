@@ -10,19 +10,19 @@ from homeassistant.components.binary_sensor import (
     BinarySensorEntityDescription,
 )
 
-from .entity import {{ cookiecutter.class_name_prefix }}Entity
+from .entity import {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}Entity
 
 if TYPE_CHECKING:
     from homeassistant.core import HomeAssistant
     from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
-    from .coordinator import {{ cookiecutter.class_name_prefix }}DataUpdateCoordinator
-    from .data import {{ cookiecutter.class_name_prefix }}ConfigEntry
+    from .coordinator import {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}DataUpdateCoordinator
+    from .data import {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}ConfigEntry
 
 ENTITY_DESCRIPTIONS = (
     BinarySensorEntityDescription(
         key="{{ cookiecutter.domain_name }}",
-        name="Integration Blueprint Binary Sensor",
+        name="{{ cookiecutter.friendly_name}} Binary Sensor",
         device_class=BinarySensorDeviceClass.CONNECTIVITY,
     ),
 )
@@ -30,12 +30,12 @@ ENTITY_DESCRIPTIONS = (
 
 async def async_setup_entry(
     hass: HomeAssistant,  # noqa: ARG001 Unused function argument: `hass`
-    entry: {{ cookiecutter.class_name_prefix }}ConfigEntry,
+    entry: {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}ConfigEntry,
     async_add_entities: AddEntitiesCallback,
 ) -> None:
     """Set up the binary_sensor platform."""
     async_add_entities(
-        {{ cookiecutter.class_name_prefix }}BinarySensor(
+        {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}BinarySensor(
             coordinator=entry.runtime_data.coordinator,
             entity_description=entity_description,
         )
@@ -43,12 +43,12 @@ async def async_setup_entry(
     )
 
 
-class {{ cookiecutter.class_name_prefix }}BinarySensor({{ cookiecutter.class_name_prefix }}Entity, BinarySensorEntity):
+class {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}BinarySensor({{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}Entity, BinarySensorEntity):
     """{{ cookiecutter.domain_name }} binary_sensor class."""
 
     def __init__(
         self,
-        coordinator: {{ cookiecutter.class_name_prefix }}DataUpdateCoordinator,
+        coordinator: {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}DataUpdateCoordinator,
         entity_description: BinarySensorEntityDescription,
     ) -> None:
         """Initialize the binary_sensor class."""

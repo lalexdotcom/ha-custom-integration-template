@@ -1,4 +1,4 @@
-"""Adds config flow for Blueprint."""
+"""Adds config flow for {{ cookiecutter.friendly_name }}."""
 
 from __future__ import annotations
 
@@ -10,16 +10,16 @@ from homeassistant.helpers.aiohttp_client import async_create_clientsession
 from slugify import slugify
 
 from .api import (
-    {{ cookiecutter.class_name_prefix }}ApiClient,
-    {{ cookiecutter.class_name_prefix }}ApiClientAuthenticationError,
-    {{ cookiecutter.class_name_prefix }}ApiClientCommunicationError,
-    {{ cookiecutter.class_name_prefix }}ApiClientError,
+    {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}ApiClient,
+    {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}ApiClientAuthenticationError,
+    {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}ApiClientCommunicationError,
+    {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}ApiClientError,
 )
 from .const import DOMAIN, LOGGER
 
 
-class BlueprintFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
-    """Config flow for Blueprint."""
+class {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}FlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
+    """Config flow for {{ cookiecutter.friendly_name }}."""
 
     VERSION = 1
 
@@ -35,13 +35,13 @@ class BlueprintFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
                     username=user_input[CONF_USERNAME],
                     password=user_input[CONF_PASSWORD],
                 )
-            except {{ cookiecutter.class_name_prefix }}ApiClientAuthenticationError as exception:
+            except {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}ApiClientAuthenticationError as exception:
                 LOGGER.warning(exception)
                 _errors["base"] = "auth"
-            except {{ cookiecutter.class_name_prefix }}ApiClientCommunicationError as exception:
+            except {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}ApiClientCommunicationError as exception:
                 LOGGER.error(exception)
                 _errors["base"] = "connection"
-            except {{ cookiecutter.class_name_prefix }}ApiClientError as exception:
+            except {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}ApiClientError as exception:
                 LOGGER.exception(exception)
                 _errors["base"] = "unknown"
             else:
@@ -81,7 +81,7 @@ class BlueprintFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
 
     async def _test_credentials(self, username: str, password: str) -> None:
         """Validate credentials."""
-        client = {{ cookiecutter.class_name_prefix }}ApiClient(
+        client = {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}ApiClient(
             username=username,
             password=password,
             session=async_create_clientsession(self.hass),

@@ -6,14 +6,14 @@ from typing import TYPE_CHECKING, Any
 
 from homeassistant.components.switch import SwitchEntity, SwitchEntityDescription
 
-from .entity import {{ cookiecutter.class_name_prefix }}Entity
+from .entity import {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}Entity
 
 if TYPE_CHECKING:
     from homeassistant.core import HomeAssistant
     from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
-    from .coordinator import {{ cookiecutter.class_name_prefix }}DataUpdateCoordinator
-    from .data import {{ cookiecutter.class_name_prefix }}ConfigEntry
+    from .coordinator import {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}DataUpdateCoordinator
+    from .data import {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}ConfigEntry
 
 ENTITY_DESCRIPTIONS = (
     SwitchEntityDescription(
@@ -26,12 +26,12 @@ ENTITY_DESCRIPTIONS = (
 
 async def async_setup_entry(
     hass: HomeAssistant,  # noqa: ARG001 Unused function argument: `hass`
-    entry: {{ cookiecutter.class_name_prefix }}ConfigEntry,
+    entry: {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}ConfigEntry,
     async_add_entities: AddEntitiesCallback,
 ) -> None:
     """Set up the switch platform."""
     async_add_entities(
-        {{ cookiecutter.class_name_prefix }}Switch(
+        {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}Switch(
             coordinator=entry.runtime_data.coordinator,
             entity_description=entity_description,
         )
@@ -39,12 +39,12 @@ async def async_setup_entry(
     )
 
 
-class {{ cookiecutter.class_name_prefix }}Switch({{ cookiecutter.class_name_prefix }}Entity, SwitchEntity):
+class {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}Switch({{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}Entity, SwitchEntity):
     """{{ cookiecutter.domain_name }} switch class."""
 
     def __init__(
         self,
-        coordinator: {{ cookiecutter.class_name_prefix }}DataUpdateCoordinator,
+        coordinator: {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}DataUpdateCoordinator,
         entity_description: SwitchEntityDescription,
     ) -> None:
         """Initialize the switch class."""

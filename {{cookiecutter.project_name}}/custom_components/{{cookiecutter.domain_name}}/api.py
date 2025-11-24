@@ -9,18 +9,18 @@ import aiohttp
 import async_timeout
 
 
-class {{ cookiecutter.class_name_prefix }}ApiClientError(Exception):
+class {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}ApiClientError(Exception):
     """Exception to indicate a general API error."""
 
 
-class {{ cookiecutter.class_name_prefix }}ApiClientCommunicationError(
-    {{ cookiecutter.class_name_prefix }}ApiClientError,
+class {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}ApiClientCommunicationError(
+    {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}ApiClientError,
 ):
     """Exception to indicate a communication error."""
 
 
-class {{ cookiecutter.class_name_prefix }}ApiClientAuthenticationError(
-    {{ cookiecutter.class_name_prefix }}ApiClientError,
+class {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}ApiClientAuthenticationError(
+    {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}ApiClientError,
 ):
     """Exception to indicate an authentication error."""
 
@@ -29,13 +29,13 @@ def _verify_response_or_raise(response: aiohttp.ClientResponse) -> None:
     """Verify that the response is valid."""
     if response.status in (401, 403):
         msg = "Invalid credentials"
-        raise {{ cookiecutter.class_name_prefix }}ApiClientAuthenticationError(
+        raise {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}ApiClientAuthenticationError(
             msg,
         )
     response.raise_for_status()
 
 
-class {{ cookiecutter.class_name_prefix }}ApiClient:
+class {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}ApiClient:
     """Sample API Client."""
 
     def __init__(
@@ -86,16 +86,16 @@ class {{ cookiecutter.class_name_prefix }}ApiClient:
 
         except TimeoutError as exception:
             msg = f"Timeout error fetching information - {exception}"
-            raise {{ cookiecutter.class_name_prefix }}ApiClientCommunicationError(
+            raise {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}ApiClientCommunicationError(
                 msg,
             ) from exception
         except (aiohttp.ClientError, socket.gaierror) as exception:
             msg = f"Error fetching information - {exception}"
-            raise {{ cookiecutter.class_name_prefix }}ApiClientCommunicationError(
+            raise {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}ApiClientCommunicationError(
                 msg,
             ) from exception
         except Exception as exception:  # pylint: disable=broad-except
             msg = f"Something really wrong happened! - {exception}"
-            raise {{ cookiecutter.class_name_prefix }}ApiClientError(
+            raise {{ cookiecutter.domain_name | replace('_', ' ') | title | replace(' ', '') }}ApiClientError(
                 msg,
             ) from exception
