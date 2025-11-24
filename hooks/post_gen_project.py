@@ -3,13 +3,12 @@ import os
 
 
 def move_template():
-    working_dir = os.listdir(os.getcwd())
+    folder_entries = os.listdir(os.getcwd())
 
-    for folder_entry in working_dir:
+    for folder_entry in folder_entries:
         shutil.move(folder_entry, "..")
 
-    os.chdir("..")
-    os.rmdir(working_dir)
+    os.rmdir(os.getcwd())
 
 
 if __name__ == "__main__":
