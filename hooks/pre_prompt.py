@@ -18,7 +18,7 @@ if __name__ == "__main__":
         with open("cookiecutter.json", "r+") as file_content:
             data = json.load(file_content)
             data["github_url"] = re.sub(
-                r"(.*)(.git?)", "\\1", github_url
+                r"(.*)(\.git?)", "\\1", github_url
             )  # <--- add `id` value.
             file_content.seek(0)  # <--- should reset file position to the beginning.
             json.dump(data, file_content, indent=4)
