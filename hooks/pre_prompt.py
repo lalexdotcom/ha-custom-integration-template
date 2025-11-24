@@ -6,7 +6,7 @@ import subprocess
 def get_repository_url():
     try:
         full_url = subprocess.getoutput(["git config --get remote.origin.url"])
-        return re.sub("(.?)\.git$", "\1", full_url)
+        return re.sub(r'(.*)(\.git)$', "\\1", full_url)
     except Exception:
         return False
 
@@ -17,7 +17,7 @@ if __name__ == "__main__":
     if github_url:
         with open("cookiecutter.json", "r+") as file_content:
             data = json.load(file_content)
-            data["github_url"] = re.sub(r'(.*)(\.git)$', "\\1", github_url)
+            data["github_url"] = github_url
             file_content.seek(0)
             json.dump(data, file_content, indent=4)
             file_content.truncate()
