@@ -8,5 +8,5 @@
   "documentation": "{{ cookiecutter.repository_url }}",
   "iot_class": "{{ cookiecutter.iot_class }}",
   "issue_tracker": "{{ cookiecutter.repository_url }}/issues",
-  "version": "0.1.0"
+  "version": "{{ cookiecutter.version }}"
 }
