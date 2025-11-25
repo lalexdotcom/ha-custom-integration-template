@@ -1,7 +1,7 @@
 # HA Custom Integration Template
 
 [![Static Badge](https://img.shields.io/badge/HACS-2.0.5-orange?style=for-the-badge&logo=homeassistantcommunitystore&logoColor=white)](https://hacs.xyz/)
-[![Static Badge](https://img.shields.io/badge/Home_Assistant-2025.2.4-blue?style=for-the-badge&logo=homeassistant&logoColor=white)
+[![Static Badge](https://img.shields.io/badge/Home_Assistant-2025.11.3-blue?style=for-the-badge&logo=homeassistant&logoColor=white)
 ](https://www.home-assistant.io/)
 
 > [!WARNING]

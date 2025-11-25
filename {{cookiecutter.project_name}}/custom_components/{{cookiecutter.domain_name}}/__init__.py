@@ -2,7 +2,7 @@
 Custom integration to integrate {{ cookiecutter.domain_name }} with Home Assistant.
 
 For more details about this integration, please refer to
-https://github.com/ludeeus/{{ cookiecutter.domain_name }}
+{{ cookiecutter.repository_url }}
 """
 
 from __future__ import annotations
